@@ -1,0 +1,15 @@
+CLAUDE.md
+DESIGNER_REPORT.md
+DESIGNER_RESPONSE.md
+specs/
+backups/
+.env
+*service-account*.json
+*service_account*.json
+credentials*.json
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+fantasy-sheet-sync-bf8184f37e2c.json
+ops/

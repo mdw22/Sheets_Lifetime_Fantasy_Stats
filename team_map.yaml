@@ -1,0 +1,17 @@
+# ESPN team ID -> exact team name in column A of the Week tabs.
+# Regenerate candidates with `python -m sheet_sync --list-teams`.
+teams:
+  1: "The Good Ole Boys (ESTR)"
+  2: "Kegorators ! (KEG)"
+  3: "Member Berries (MEBR)"
+  4: "North Augusta Gypsies (NCAR)"
+  5: "Beer n Deer (MANN)"
+  6: "Dirty Musty Steinman (JEw)"
+  7: "team marshall (UWU)"
+  8: "Robert Dibble (FINk)"
+  9: "Waelde’sUnderageGroomingAcademy (WUGA)"
+  10: "The Drunk Monks (NIL)"
+  11: "House Stark (STAR)"
+  12: "Apukalypse Now (ARGH)"
+  13: "Gatlinburg Mountaineers (HRSA)"
+  14: "Aboriginal Men (ABO)"
