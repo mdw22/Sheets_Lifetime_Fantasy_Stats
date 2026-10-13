@@ -53,7 +53,7 @@ python -m sheet_sync.verify compare --before backups/before_w4.json --week 4
 
 ## Automation
 
-`.github/workflows/weekly_sheet_update.yml` runs Tuesday and Wednesday at 14:00 UTC (10:00 EDT; 09:00 EST after Nov 1). Manual runs (`workflow_dispatch`) take `week` (optional) and `commit` (default false).
+`.github/workflows/weekly_sheet_update.yml` runs Tuesday and Wednesday at 14:17 UTC (10:17 EDT; 09:17 EST after Nov 1). The minute is deliberately not :00: GitHub's scheduler is best-effort, and top-of-hour runs are the most likely to be delayed or dropped. If a scheduled run doesn't appear, dispatch the same run manually from the Actions tab (the sync is idempotent). Manual runs (`workflow_dispatch`) take `week` (optional) and `commit` (default false).
 
 Writes are controlled by the repo variable **`SYNC_ENABLED`** (kill switch):
 
@@ -82,7 +82,7 @@ This is a public repo: GitHub disables scheduled workflows in a public repo afte
 4. Copy the Week 1 F2:G15 formulas into Weeks 2-14 on the real sheet.
 5. For Weeks 1-4: `verify snapshot`, `--week N --commit --allow-production`, zero-diff rerun, `verify compare --allow-production`.
 6. Push the repo; add the GitHub secrets and variables (`GOOGLE_SHEET_ID` = real sheet, `SYNC_ENABLED` unset); run a manual dispatch dry-run and read its summary.
-7. Set `SYNC_ENABLED` = `true`. **First scheduled write: Tue 2026-10-13 14:00 UTC** (Week 5, after Monday Night Football on Oct 12). Check the run summary and the sheet afterwards.
+7. Set `SYNC_ENABLED` = `true`. Check each run summary and the sheet afterwards. (The first scheduled slot, Tue 2026-10-13 14:00 UTC, never fired; Week 5 was written by a manual dispatch and the crons moved to :17. First unattended write: Tue 2026-10-20 14:17 UTC, Week 6.)
 
 ### Rollback
 - **Stop all writes now:** set the repo variable `SYNC_ENABLED` to anything but `true` (or delete it). No code change; the next scheduled run is a dry run.

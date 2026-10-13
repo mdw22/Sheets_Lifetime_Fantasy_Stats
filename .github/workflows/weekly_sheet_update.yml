@@ -2,11 +2,13 @@ name: Weekly sheet update
 
 on:
   schedule:
-    # Cron is UTC. 14:00 UTC = 10:00 America/New_York during EDT (through Nov 1, 2026).
-    # After DST ends it fires at 09:00 EST. Both are after MNF and ESPN's overnight stat
+    # Cron is UTC. 14:17 UTC = 10:17 America/New_York during EDT (through Nov 1, 2026).
+    # After DST ends it fires at 09:17 EST. Both are after MNF and ESPN's overnight stat
     # corrections, so the one-hour drift is acceptable.
-    - cron: "0 14 * * 2"   # Tuesday
-    - cron: "0 14 * * 3"   # Wednesday re-run for late stat corrections (idempotent)
+    # Minute 17, not :00: GitHub's scheduler is best-effort and the top of the hour is its
+    # busiest slot (runs there can be delayed or dropped; the 2026-10-13 14:00 run never fired).
+    - cron: "17 14 * * 2"   # Tuesday
+    - cron: "17 14 * * 3"   # Wednesday re-run for late stat corrections (idempotent)
   workflow_dispatch:
     inputs:
       week:
